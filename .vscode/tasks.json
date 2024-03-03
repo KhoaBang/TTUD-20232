@@ -1,0 +1,94 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "clear",
+			"command": "clear",
+		},
+		{
+			"type": "cppbuild",
+			"label": "Build and run v1 c++",
+			"command": "C:\\MinGW\\bin\\g++.exe",
+			"args": [
+				"-fdiagnostics-color=always",
+				"-g",
+				"${file}",
+				"-o",
+				"${fileDirname}\\exefile\\${fileBasenameNoExtension}.exe"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"dependsOn": [
+				"clear"
+			],
+			"presentation": {
+				"echo": false,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": false,
+				"clear": false
+			},
+			"group": "build",
+			"detail": "compiler: \"C:\\MinGW\\bin\\g++.exe\""
+		},
+		{
+			"type": "shell",
+			"label": "Build and run v3 c++",
+			"command": "mv",
+			"args": [
+				"${fileDirname}\\exefile\\${fileBasenameNoExtension}.exe",
+				"${fileDirname}\\exefile\\"
+			],
+			"group": {
+				"kind": "none",
+				"isDefault": true
+			},
+			"dependsOn": [
+				"Build and run v2 c++"
+			],
+			"presentation": {
+				"echo": false,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": false,
+				"clear": false
+			},
+			"problemMatcher": []
+		},
+		{
+			"type": "shell",
+			"label": "Build and run v2 c++",
+			"command": "${fileDirname}\\exefile\\${fileBasenameNoExtension}.exe",
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"dependsOn": [
+				"Build and run v1 c++"
+			],
+			"presentation": {
+				"echo": false,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": false,
+				"clear": false
+			},
+			"detail": "execute C/CPP exe"
+			
+		}
+	]
+}
